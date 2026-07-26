@@ -2,43 +2,39 @@ class Solution {
     public int[] searchRange(int[] arr, int x) {
     int[] ans={-1,-1};
     int l=0,h=arr.length-1;
-    boolean flag=false;
+    int fp=-1;
     while(l<=h){
         int m=l+(h-l)/2;
         if(arr[m]==x){
-            flag=true;
-            break;
-        }else if(arr[m]>x)
+            if(m>0 && arr[m]==arr[m-1])
             h=m-1;
+            else{
+            fp=m;
+            break;
+            }
+        }else if(arr[m]>x)
+        h=m-1;
         else
-            l=m+1;
+        l=m+1;
     }
-    if(flag==false)
-    return ans;
-    int lb=arr.length;
+    ans[0]=fp;
+    int lp=-1;
     l=0; h=arr.length-1;
     while(l<=h){
         int m=l+(h-l)/2;
-        if(arr[m]>=x){
-        lb=Math.min(lb,m);
-        h=m-1;
-        }
-        else
+        if(arr[m]==x){
+            if(m<arr.length-1 && arr[m]==arr[m+1])
             l=m+1;
-    }
-    ans[0]=lb;
-    int ub=arr.length;
-    l=0; h=arr.length-1;
-    while(l<=h){
-        int m=l+(h-l)/2;
-        if(arr[m]>x){
-        ub=Math.min(ub,m);
-        h=m-1;
-        }
+            else{
+            lp=m;
+            break;
+            }
+        }else if(arr[m]>x)
+           h=m-1;
         else
-            l=m+1;
+          l=m+1;
     }
-    ans[1]=ub-1;
+    ans[1]=lp;
     return ans;
     }
 }
