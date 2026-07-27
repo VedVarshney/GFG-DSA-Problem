@@ -6,54 +6,21 @@ class Solution {
     int carry=0;
     while(i>=0 && j>=0){
     int sum=(a.charAt(i)-'0')+(b.charAt(j)-'0')+carry;
-    if(sum==2){
-    sb.append(0);
-    carry=1;
-    }else if(sum==3){
-    sb.append(1);
-    carry=1;   
-    }else if(sum==0){
-    sb.append(0);
-    carry=0;   
-    }else{
-    sb.append(1);
-    carry=0;
-    }
+    sb.append(sum%2);
+    carry=sum/2;
     i--;
     j--;
     }
     while(i>=0){
     int sum=(a.charAt(i)-'0')+carry;
-    if(sum==2){
-    sb.append(0);
-    carry=1;
-    }else if(sum==3){
-    sb.append(1);
-    carry=1;   
-    }else if(sum==0){
-    sb.append(0);
-    carry=0;   
-    }else{
-    sb.append(1);
-    carry=0;
-    }
+    sb.append(sum%2);
+    carry=sum/2;
     i--;
     }
     while(j>=0){
     int sum=(b.charAt(j)-'0')+carry;
-    if(sum==2){
-    sb.append(0);
-    carry=1;
-    }else if(sum==3){
-    sb.append(1);
-    carry=1;   
-    }else if(sum==0){
-    sb.append(0);
-    carry=0;   
-    }else{
-    sb.append(1);
-    carry=0;
-    }
+    sb.append(sum%2);
+    carry=sum/2;
     j--;
     }
     if(carry!=0) sb.append(carry);
