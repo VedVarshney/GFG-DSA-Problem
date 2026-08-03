@@ -3,13 +3,14 @@ class Solution {
     if(s.length()!=t.length())
     return false;
     char[] srr=s.toCharArray();
-    char[] trr=t.toCharArray();   
+    char[] trr=t.toCharArray(); 
     Arrays.sort(srr);
     Arrays.sort(trr);
-    for(int i=0; i<srr.length; i++){
-        if(srr[i]!=trr[i]){
-            return false;
-        }
+    int i=0;
+    while(i<srr.length){
+        if(srr[i]!=trr[i])
+        return false;
+        i++;
     }
     return true;
     }
