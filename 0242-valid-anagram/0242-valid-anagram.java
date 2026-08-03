@@ -2,15 +2,32 @@ class Solution {
     public boolean isAnagram(String s, String t) {
     if(s.length()!=t.length())
     return false;
-    char[] srr=s.toCharArray();
-    char[] trr=t.toCharArray(); 
-    Arrays.sort(srr);
-    Arrays.sort(trr);
-    int i=0;
-    while(i<srr.length){
-        if(srr[i]!=trr[i])
+    HashMap<Character,Integer> map1=new HashMap<>();
+    HashMap<Character,Integer> map2=new HashMap<>();  
+    for(int i=0; i<s.length(); i++){
+        char key=s.charAt(i);
+        if(map1.containsKey(key)){
+        int frq=map1.get(key);
+        map1.put(key,frq+1);
+        }else{
+            map1.put(key,1);
+        }
+    }  
+    for(int i=0; i<t.length(); i++){
+        char key=t.charAt(i);
+        if(map2.containsKey(key)){
+        int frq=map2.get(key);
+        map2.put(key,frq+1);
+        }else{
+            map2.put(key,1);
+        }
+    }
+    for(char key : map1.keySet()){
+        int val1=map1.get(key);
+        if(map2.containsKey(key)==false) return false;
+        int val2=map2.get(key);
+        if(val1!=val2) 
         return false;
-        i++;
     }
     return true;
     }
