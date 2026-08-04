@@ -6,12 +6,13 @@ class Solution {
     public int maximumNumberOfStringPairs(String[] arr) {
     int c=0;
     HashSet<String> set = new HashSet<>();
-    for(int i=0; i<arr.length; i++){
-        if(set.contains(rev(arr[i])))
-           c++;
-        else
-           set.add(arr[i]);
-    }  
+    for(String ele : arr){
+        if(set.contains(rev(ele))){
+        c++;
+        }else{
+        set.add(ele);
+        }
+    }    
     return c;
     }
 }
