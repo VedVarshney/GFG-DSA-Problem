@@ -1,35 +1,34 @@
 class Solution {
     public int[] findEvenNumbers(int[] arr) {
     HashMap<Integer,Integer> map = new HashMap<>();
+    ArrayList<Integer> al = new ArrayList<>();
     for(int ele : arr){
         if(map.containsKey(ele)){
-        int fr=map.get(ele);
-        map.put(ele,fr+1);
+            map.put(ele,map.get(ele)+1);
         }else{
-        map.put(ele,1);
+            map.put(ele,1);
         }
+    }  
+    for(int i=100; i<=998; i+=2){
+    int x=i;
+    int c=x%10; x/=10;
+    int b=x%10; x/=10;
+    int a=x%10; 
+    if(map.containsKey(a)){
+       int aFrq=map.get(a);
+       map.put(a,aFrq-1);
+       if(aFrq==1) map.remove(a);
+    if(map.containsKey(b)){
+       int bFrq=map.get(b);
+       map.put(b,bFrq-1);
+       if(bFrq==1) map.remove(b);
+    if(map.containsKey(c)){
+        al.add(i);
     }
-    ArrayList<Integer> al = new ArrayList<>();
-    for(int i=100; i<=999; i+=2){
-        int x=i;
-        int c=x%10; x/=10;
-        int b=x%10; x/=10;
-        int a=x;
-        if(map.containsKey(a)){
-            int aFrq=map.get(a);
-            map.put(a,aFrq-1);
-            if(aFrq==1) map.remove(a);
-        if(map.containsKey(b)){
-            int bFrq=map.get(b);
-            map.put(b,bFrq-1);
-            if(bFrq==1) map.remove(b);
-        if(map.containsKey(c)){
-                al.add(i);
-            }
-            map.put(b,bFrq);  
-            }
-            map.put(a,aFrq);
-        }
+    map.put(b,bFrq);   
+    }
+    map.put(a,aFrq);
+    }
     }
     int[] ans=new int[al.size()];
     for(int i=0; i<al.size(); i++){
