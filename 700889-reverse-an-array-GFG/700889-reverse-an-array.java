@@ -1,13 +1,10 @@
 class Solution {
     public void reverseArray(int arr[]) {
     int n=arr.length;
-    int[] ans = new int[n];
-    int j=0;
-    for(int i=n-1; i>=0; i--){
-        ans[j++]=arr[i];
-    }
-    for(int i=0; i<n; i++){
-        arr[i]=ans[i];
+    for(int i=0; i<n/2; i++){
+        int t=arr[i];
+        arr[i]=arr[n-1-i];
+        arr[n-1-i]=t;
     }
     }
 }
