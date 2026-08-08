@@ -1,16 +1,18 @@
 class Solution {
     void segregate0and1(int[] arr) {
     int n=arr.length;
-    int noz=0;
-    for(int i=0; i<n; i++){
+    int i=0,j=n-1;
+    while(i<j){
         if(arr[i]==0)
-        noz++;
-    }
-    for(int i=0; i<n; i++){
-        if(i<noz)
-        arr[i]=0;
-        else
-        arr[i]=1;
+           i++;
+        else if(arr[j]==1)
+           j--;
+        else if(arr[i]==1 && arr[j]==0){
+            arr[i]=0;
+            arr[j]=1;
+            i++;
+            j--;
+        }
     }
     }
 }
