@@ -1,10 +1,13 @@
 class Solution {
     public void reverseArray(int arr[]) {
     int n=arr.length;
-    for(int i=0; i<n/2; i++){
+    int i=0,j=n-1;
+    while(i<j){
         int t=arr[i];
-        arr[i]=arr[n-1-i];
-        arr[n-1-i]=t;
+        arr[i]=arr[j];
+        arr[j]=t;
+        i++;
+        j--;
     }
     }
 }
