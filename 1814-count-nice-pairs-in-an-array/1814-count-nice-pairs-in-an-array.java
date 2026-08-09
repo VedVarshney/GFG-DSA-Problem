@@ -1,23 +1,27 @@
 class Solution {
     public int rev(int n){
         int rv=0;
-        for(int i=n; i>0; i/=10)
-        rv=rv*10+i%10;
+        while(n>0){
+            rv=rv*10+n%10;
+            n/=10;
+        }
         return rv;
     }
     public int countNicePairs(int[] arr) {
     HashMap<Integer,Integer> map = new HashMap<>();
     int c=0;
+    for(int i=0; i<arr.length; i++){
+    arr[i]-=rev(arr[i]);
+    }    
     for(int ele : arr){
-        int diff=ele-rev(ele);
-        if(map.containsKey(diff)){
-           c+=map.get(diff);
-           c%=1000000007;
-           map.put(diff,map.get(diff)+1);
+        if(map.containsKey(ele)){
+            c+=map.get(ele);
+            c%=1000000007;
+            map.put(ele,map.get(ele)+1);
         }else{
-           map.put(diff,1);
+            map.put(ele,1);
         }
-    }   
+    }
     return c;
     }
 }
