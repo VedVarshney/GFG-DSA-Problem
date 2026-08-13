@@ -5,19 +5,16 @@ class Solution {
     for(int i=0; i<arr.length; i++){
     String s=arr[i];
     boolean flag=true;
-    String sum="";
     for(int j=0; j<s.length(); j++){
         if(s.charAt(j)>=97 && s.charAt(j)<=122){
            flag=false;
            break;
-        }else{
-            sum+=s.charAt(j);
         }
     }
     if(!flag) 
     ans[i]=s.length();
     else
-    ans[i]=Integer.parseInt(sum);
+    ans[i]=Integer.parseInt(s);
     }
     int mx=Integer.MIN_VALUE;
     for(int i=0; i<ans.length; i++){
