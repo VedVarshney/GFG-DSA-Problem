@@ -8,21 +8,12 @@ class Solution {
         map.put(ele,1);
     }
     int p=0,c=0;
-    for(int i : map.keySet()){
-    if(map.get(i)%2==0){
-        p+=map.get(i)/2;
-    }
-    else{
-        p+=map.get(i)/2;
-        map.put(i,1);
-    }
+    for(int i : map.values()){
+        p+=i/2;
+        c+=i%2;
     }
     int[] ans = new int[2];
     ans[0]=p;
-    for(int i : map.values()){
-        if(i==1)
-        c++;
-    }
     ans[1]=c;
     return ans;
     } 
