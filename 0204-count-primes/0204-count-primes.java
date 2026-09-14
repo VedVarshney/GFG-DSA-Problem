@@ -1,21 +1,24 @@
 class Solution {
     public int countPrimes(int n) {
-    boolean[] arr = new boolean[n+1];  
-    for(int i=0; i<=n; i++){
+    if(n<=2) return 0;
+    boolean[] arr = new boolean[n];  
+    for(int i=2; i<n; i++){
         arr[i]=true;
     } 
-    int c=0;
-    for(int i=2; i<n; i++){
+    for(int i=2; i*i<n; i++){
         if(arr[i]) {
-            c++;
-        for(int j=i*2; j<=n; j+=i)
+        for(int j=i*i; j<n; j+=i)
         arr[j]=false;
         }
-
+    }
+    int c=0;
+    for(int i=2; i<n; i++){
+        if(arr[i]) c++;
     }
     return c;
     }
 }
+
 
 // Synced seamlessly with LeetHub Pro
 // Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
