@@ -7,13 +7,15 @@ class Solution {
          arr[i]=(arr[i]+ arr[i+1])%26;
     }
     for(int i=0; i<sb.length(); i++){
-        int as=sb.charAt(i)-'a';
-        as=(arr[i]+as)%26;
-        sb.setCharAt(i,(char)(as+'a'));
+        int as=sb.charAt(i);
+        as=(arr[i]+as);
+        if(as>122) as=96+(as%122);
+        sb.setCharAt(i,(char)(as));
     }
     return sb.toString();
     }
 }
+
 
 // Synced seamlessly with LeetHub Pro
 // Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
