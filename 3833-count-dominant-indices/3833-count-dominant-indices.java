@@ -1,17 +1,15 @@
 class Solution {
-    public double avg(int[] arr , int j){
-        double sum=0;
-        for(int i=j; i<arr.length; i++){
-            sum+=arr[i];
-        }
-        return sum/(arr.length-j);
-    }
     public int dominantIndices(int[] arr) {
     int n=arr.length;
-    int  c=0;
+    int[] ans = new int[n];
+    ans[n-1]=arr[n-1];
+    for(int i=n-2; i>=0; i--){
+    ans[i]=arr[i]+ans[i+1];
+    }    
+    int c=0;
     for(int i=0; i<n-1; i++){
-        if(arr[i]>avg(arr,i+1)) c++;
-    }   
+    if(arr[i]>((ans[i+1])/(n-i-1))) c++;
+    }
     return c;
     }
 }
