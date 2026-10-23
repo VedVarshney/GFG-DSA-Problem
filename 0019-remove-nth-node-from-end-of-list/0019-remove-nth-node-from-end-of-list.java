@@ -1,15 +1,15 @@
 class Solution {
-    public ListNode removeNthFromEnd(ListNode head, int k) {
-    int len=0;
+    public ListNode removeNthFromEnd(ListNode head, int n) {
     ListNode temp=head;
+    int len=0;
     while(temp!=null){
         temp=temp.next;
         len++;
     }   
-    if(k==len) return head.next;
+    if(n==len) return head.next; 
     temp=head;
-    for(int i=0; i<len-k-1; i++){
-       temp=temp.next;
+    for(int i=0; i<len-n-1; i++){
+        temp=temp.next;
     }
     temp.next=temp.next.next;
     return head;
