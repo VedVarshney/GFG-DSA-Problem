@@ -14,19 +14,19 @@ class Solution {
             head=head.next;
         }
         minr++;
-        if(minc>maxc || minr>maxr) break;
+        //if(minc>maxc || minr>maxr) break;
         for(int i=minr; i<=maxr && head!=null; i++){
             arr[i][maxc]=head.val;
             head=head.next;
         }
         maxc--;
-        if(minc>maxc || minr>maxr) break;
+        //if(minc>maxc || minr>maxr) break;
         for(int j=maxc; j>=minc && head!=null; j--){
             arr[maxr][j]=head.val;
             head=head.next;
         }
         maxr--;
-        if(minc>maxc || minr>maxr) break;
+        //if(minc>maxc || minr>maxr) break;
         for(int i=maxr; i>=minr && head!=null; i--){
             arr[i][minc]=head.val;
             head=head.next;
